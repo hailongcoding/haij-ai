@@ -1,11 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
-// Debug logs (will show in Vercel logs)
-console.log("Auth route loaded")
-console.log("AUTH_GOOGLE_ID:", process.env.AUTH_GOOGLE_ID ? "present" : "MISSING")
-console.log("AUTH_GOOGLE_SECRET:", process.env.AUTH_GOOGLE_SECRET ? "present" : "MISSING")
-console.log("AUTH_SECRET:", process.env.AUTH_SECRET ? "present" : "MISSING")
+console.log("Auth route loaded - GOOGLE_ID:", process.env.AUTH_GOOGLE_ID ? "present" : "MISSING")
+console.log("Auth route loaded - GOOGLE_SECRET:", process.env.AUTH_GOOGLE_SECRET ? "present" : "MISSING")
+console.log("Auth route loaded - SECRET:", process.env.AUTH_SECRET ? "present" : "MISSING")
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -14,8 +12,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_GOOGLE_SECRET || "",
     }),
   ],
-  secret: process.env.AUTH_SECRET || "fallback-secret-for-debug", // fallback to avoid undefined crash
-  debug: true, // enables detailed Auth.js logs in Vercel
+  secret: process.env.AUTH_SECRET,
+  debug: true,
+  experimental: {
+    enableGuest: false,  // ← disables /api/auth/guest completely
+  },
   callbacks: {
     async session({ session, token }) {
       if (token?.sub) {
@@ -23,10 +24,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return session
     },
-  },
-  // Disable guest mode explicitly
-  experimental: {
-    enableGuest: false,
   },
 })
 
