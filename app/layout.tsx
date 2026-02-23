@@ -4,10 +4,9 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
-// import { SessionProvider } from "next-auth/react";   ← commented out to disable auth
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://haij-ai.vercel.app"), // change to your domain if different
+  metadataBase: new URL("https://haij-ai.vercel.app"),
   title: "hAIjacker - Uncensored AI",
   description: "No-limits coding & hacking AI from HCMC",
 };
@@ -74,12 +73,7 @@ export default function RootLayout({
           enableSystem
         >
           <Toaster position="top-center" />
-          {/* 
-            <SessionProvider>   ← commented out to disable auth
-              {children}
-            </SessionProvider> 
-          */}
-          {children}  {/* ← this is now direct */}
+          {children}
         </ThemeProvider>
       </body>
     </html>
