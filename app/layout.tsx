@@ -1,4 +1,4 @@
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 
 export const metadata = {
   title: "hAIjacker - Login Required",
