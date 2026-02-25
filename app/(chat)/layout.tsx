@@ -24,13 +24,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 async function SidebarWrapper({ children }: { children: React.ReactNode }) {
   // const [session, cookieStore] = await Promise.all([auth(), cookies()]);  ← commented out to disable auth
-  const [session, cookieStore] = await Promise.all([null, cookies()]); // ← fallback to no session
-
+  const cookieStore = await cookies();  // ← only cookies, no auth
   const isCollapsed = cookieStore.get("sidebar_state")?.value !== "true";
 
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
-      <AppSidebar user={session?.user} />  // ← user is null, sidebar shows without user nav
+      <AppSidebar user={null} />  // ← pass null for user (sidebar shows without user nav)
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
