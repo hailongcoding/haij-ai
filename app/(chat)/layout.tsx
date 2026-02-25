@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { DataStreamProvider } from "@/components/data-stream-provider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-// import { auth } from "../(auth)/auth";  ← COMMENTED OUT
+// import { auth } from "../(auth)/auth";  ← commented out to stop crash
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,8 +23,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 
 async function SidebarWrapper({ children }: { children: React.ReactNode }) {
-  // const [session, cookieStore] = await Promise.all([auth(), cookies()]);  ← COMMENTED OUT
-  const cookieStore = await cookies();  // only keep cookies
+  // const [session, cookieStore] = await Promise.all([auth(), cookies()]);  ← commented out
+  const cookieStore = await cookies();  // keep only cookies for sidebar state
   const isCollapsed = cookieStore.get("sidebar_state")?.value !== "true";
 
   return (
