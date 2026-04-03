@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@source "../node_modules/streamdown/dist/index.js";
+@custom-variant dark (&:is(.dark, .dark *));
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+/* hAIjacker - Red Cyberpunk Theme (Light) */
+:root {
+  --background: hsl(0 0% 98%);
+  --foreground: hsl(0 10% 5%);
+  --card: hsl(0 0% 98%);
+  --card-foreground: hsl(0 10% 5%);
+  --popover: hsl(0 0% 98%);
+  --popover-foreground: hsl(0 10% 5%);
+  --primary: hsl(0 85% 45%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 10% 94%);
+  --secondary-foreground: hsl(0 10% 10%);
+  --muted: hsl(0 10% 94%);
+  --muted-foreground: hsl(0 5% 45%);
+  --accent: hsl(0 80% 95%);
+  --accent-foreground: hsl(0 85% 35%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 10% 88%);
+  --input: hsl(0 10% 88%);
+  --ring: hsl(0 85% 45%);
+  --chart-1: hsl(0 85% 55%);
+  --chart-2: hsl(15 80% 50%);
+  --chart-3: hsl(340 70% 45%);
+  --chart-4: hsl(0 60% 70%);
+  --chart-5: hsl(20 90% 60%);
+  --sidebar-background: hsl(0 0% 97%);
+  --sidebar-foreground: hsl(0 5% 25%);
+  --sidebar-primary: hsl(0 85% 45%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(0 80% 95%);
+  --sidebar-accent-foreground: hsl(0 85% 35%);
+  --sidebar-border: hsl(0 10% 88%);
+  --sidebar-ring: hsl(0 85% 45%);
+  --radius: 0.5rem;
+  --sidebar: hsl(0 0% 97%);
+}
+
+/* hAIjacker - Red Cyberpunk Theme (Dark) */
+.dark {
+  --background: hsl(0 10% 4%);
+  --foreground: hsl(0 5% 95%);
+  --card: hsl(0 10% 4%);
+  --card-foreground: hsl(0 5% 95%);
+  --popover: hsl(0 10% 4%);
+  --popover-foreground: hsl(0 5% 95%);
+  --primary: hsl(0 85% 55%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 8% 12%);
+  --secondary-foreground: hsl(0 5% 95%);
+  --muted: hsl(0 8% 12%);
+  --muted-foreground: hsl(0 5% 60%);
+  --accent: hsl(0 8% 14%);
+  --accent-foreground: hsl(0 85% 65%);
+  --destructive: hsl(0 62% 35%);
+  --destructive-foreground: hsl(0 5% 95%);
+  --border: hsl(0 8% 14%);
+  --input: hsl(0 8% 14%);
+  --ring: hsl(0 85% 55%);
+  --chart-1: hsl(0 85% 60%);
+  --chart-2: hsl(15 75% 55%);
+  --chart-3: hsl(340 65% 55%);
+  --chart-4: hsl(0 55% 45%);
+  --chart-5: hsl(20 85% 55%);
+  --sidebar-background: hsl(0 12% 6%);
+  --sidebar-foreground: hsl(0 5% 90%);
+  --sidebar-primary: hsl(0 85% 55%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(0 8% 12%);
+  --sidebar-accent-foreground: hsl(0 85% 65%);
+  --sidebar-border: hsl(0 8% 14%);
+  --sidebar-ring: hsl(0 85% 55%);
+  --sidebar: hsl(0 12% 6%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Red glow effect on focus */
+input:focus, textarea:focus, button:focus-visible {
+  box-shadow: 0 0 0 2px hsl(0 85% 55% / 0.3);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(0 85% 45% / 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0 85% 55% / 0.7);
+}
